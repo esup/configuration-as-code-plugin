@@ -260,13 +260,22 @@ public class MyCustomConfigurator extends BaseConfigurator<MyComponent> {
     }
     
     @Override
-    protected MyComponent instance(Mapping mapping, ConfigurationContext context) {
+    protected MyComponent instance(Mapping mapping, ConfigurationContext context) 
+            throws ConfiguratorException {
         // 自定义实例化逻辑
+        String name = mapping.getScalarValue("name");
+        MyComponent component = new MyComponent(name);
+        return component;
     }
     
     @Override
     public Set<Attribute<MyComponent, ?>> describe() {
         // 定义可配置属性
+        Set<Attribute<MyComponent, ?>> attributes = new HashSet<>();
+        attributes.add(new Attribute<MyComponent, String>("name", String.class)
+            .getter(MyComponent::getName)
+            .setter(MyComponent::setName));
+        return attributes;
     }
 }
 ```
@@ -284,7 +293,7 @@ public class MyComponent extends Descriptor<...> {
 
 ```yaml
 jenkins:
-  myComponent:  # 而不是 "myComponent" 或 "MyComponent"
+  myComponent:  # 使用 Symbol 注解定义的友好名称，而不是类名 "MyComponent"
     setting: value
 ```
 
