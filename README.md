@@ -272,7 +272,7 @@ Plugin developers wanting to support JCasC in their plugin should [check out our
 
 For developers interested in understanding how JCasC works internally or extending it:
 
-- [Architecture and Principles (English)](docs/IMPLEMENTATION.md) - Technical implementation details
+- [Implementation Details (English)](docs/IMPLEMENTATION.md) - Technical implementation details
 - [架构原理 (中文)](docs/ARCHITECTURE_ZH.md) - JCasC 插件的架构原理和工作机制详解
 - [Developer Guide](docs/DEVELOPER.md) - API and design for plugin developers
 - [Plugin Development Guide](docs/PLUGINS.md) - How to add JCasC support to your plugin
